@@ -65,6 +65,8 @@ export class SideNavMenuComponent implements OnInit {
       id: [0],
       header: ['', [Validators.required,
         Validators.pattern(/^(\s+\S+\s*)*(?!\s).*$/)]],
+        linkName: ['', [Validators.required,
+          Validators.pattern(/^(\s+\S+\s*)*(?!\s).*$/)]],
       link: [Validators.required,
         Validators.pattern(/^(\s+\S+\s*)*(?!\s).*$/)],
     });

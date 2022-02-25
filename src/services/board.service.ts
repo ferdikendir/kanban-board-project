@@ -14,7 +14,10 @@ export class BoardService {
     .toPromise()
     .then((response) => <BoardItem[]>response.data)
     .then((data) => {
-      data.forEach((item) => (item.id = this.createRandomId()));
+      data.forEach((item) => {
+        item.id = this.createRandomId();
+        item.link = 'http://' + item.link;
+      });
       return data;
     });
 
@@ -30,6 +33,7 @@ export class BoardService {
 
   addNewBoard(boardItem: BoardItem) {
     boardItem.id = this.createRandomId();
+    boardItem.link = 'http://' + boardItem.link;
     this.allBoards.then((data) => {
       data.push(boardItem);
       return data;

@@ -3,5 +3,6 @@ import { TaskListItem } from "./task-list-item";
 
 export interface BoardItem  extends BaseListItem {
     link: string;
+    linkName: string;
     taskListItems: TaskListItem[]
 }
