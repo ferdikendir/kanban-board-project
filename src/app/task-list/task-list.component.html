@@ -1,0 +1,158 @@
+<div [style]="'background-color:' + item?.color" class="card div-border-radius">
+  <div
+    cdkDropList
+    [cdkDropListData]="item?.listItems"
+    (cdkDropListDropped)="onDrop($event)"
+    [style]="'background-color:' + item?.color"
+    class="div-border-radius"
+  >
+    <div class="card-body">
+      <h5 class="card-title">
+        {{ item?.header }}
+        <button
+          class="btn btn-tool float-right"
+          (click)="collapse.toggle()"
+          [attr.aria-expanded]="!isCollapsed"
+          aria-controls="collapseExample"
+        >
+          <i class="fa fa-minus" *ngIf="!isCollapsed" style="color: white" aria-hidden="true"></i>
+          <i class="fa fa-plus" *ngIf="isCollapsed" style="color: white" aria-hidden="true"></i>
+        </button>
+      </h5>
+      <div #collapse="ngbCollapse" [(ngbCollapse)]="isCollapsed">
+        <app-card
+          (onUpdateCard)="openPopupAndFillData(item)"
+          (onDeleteCard)="selectedCard = item; openDeletePopup()"
+          *ngFor="let item of item?.listItems"
+          [item]="item"
+        >
+        </app-card>
+      </div>
+    </div>
+  </div>
+  <div class="card-footer" *ngIf="item?.isAddable">
+    <button
+      type="button"
+      class="btn btn-primary btn-sm float-sm-right"
+      (click)="openPopupAndClearForm()"
+    >
+      Add Task
+    </button>
+  </div>
+</div>
+
+<div
+  class="modal"
+  tabindex="-1"
+  role="dialog"
+  [ngStyle]="{ display: displayStyle }"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Add New Task</h4>
+        <button type="button" class="close" (click)="closePopup()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form
+          [formGroup]="addCardForm"
+          (submit)="addTaskList()"
+          autocomplete="off"
+        >
+          <div class="mb-3">
+            <label for="header">Task header</label>
+            <div class="input-group">
+              <input
+                id="header"
+                type="text"
+                class="form-control"
+                placeholder="Header"
+                formControlName="header"
+              />
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="content">Task content</label>
+            <div class="input-group">
+              <input
+                id="content"
+                type="text"
+                class="form-control"
+                placeholder="Content"
+                formControlName="content"
+              />
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label for="content">Task color</label>
+            <div class="input-group">
+              <input
+                value="#213123"
+                type="color"
+                class="form-control"
+                placeholder="Color"
+                formControlName="color"
+              />
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn btn-xs btn-danger"
+          (click)="closePopup()"
+        >
+          Close
+        </button>
+        <button
+          type="submit"
+          class="btn btn-xs btn-primary"
+          (click)="addTaskList(); isCollapsed? collapse.toggle(): null"
+        >
+          Add
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div
+  class="modal"
+  tabindex="-1"
+  role="dialog"
+  [ngStyle]="{ display: displayStyleForDelete }"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Delete Task</h4>
+        <button type="button" class="close" (click)="closeDeletePopup()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>"{{ selectedCard.header }}" will be deleted. Are you sure?</p>
+      </div>
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn btn-xs btn-danger"
+          (click)="closeDeletePopup()"
+        >
+          Close
+        </button>
+        <button
+          type="submit"
+          class="btn btn-xs btn-primary"
+          (click)="deleteCard()"
+        >
+          Delete
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

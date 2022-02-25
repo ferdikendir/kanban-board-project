@@ -1,0 +1,122 @@
+<mat-toolbar class="mat-elevation-z8" mode="side">
+  <button
+    mat-icon-button
+    *ngIf="sidenav.mode === 'over'"
+    (click)="sidenav.toggle()"
+  >
+    <mat-icon *ngIf="!sidenav.opened"> menu </mat-icon>
+    <mat-icon *ngIf="sidenav.opened"> close </mat-icon>
+  </button>
+  My Kanban Project
+</mat-toolbar>
+
+<mat-sidenav-container>
+  <mat-sidenav #sidenav class="mat-elevation-z8">
+    <h4 class="name">My Projects</h4>
+    <p class="designation">All Projects</p>
+
+    <mat-divider></mat-divider>
+
+    <button
+      mat-button
+      *ngFor="let item of boards$ | async"
+      class="menu-button"
+      (click)="goTo(item)"
+    >
+      <mat-icon>list</mat-icon>
+      <span>{{ item.header }}</span>
+    </button>
+
+    <mat-divider></mat-divider>
+
+    <button mat-button class="menu-button" (click)="openPopup()">
+      <mat-icon>add</mat-icon>
+      <span>Add Board</span>
+    </button>
+
+    <mat-divider></mat-divider>
+    <p class="designation">History</p>
+    <mat-divider></mat-divider>
+    <button
+    mat-button
+    *ngFor="let item of lastVisited"
+    class="menu-button"
+    (click)="goTo(item)"
+  >
+    <mat-icon>refresh</mat-icon>
+    <span>{{ item.header }}</span>
+  </button>
+
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div class="content mat-elevation-z8">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+<div
+  class="modal"
+  tabindex="-1"
+  role="dialog"
+  [ngStyle]="{ display: displayStyle }"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Add New Task</h4>
+        <button type="button" class="close" (click)="closePopup()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form
+          [formGroup]="addBoardForm"
+          (submit)="addBoardList()"
+          autocomplete="off"
+        >
+          <div class="mb-3">
+            <label for="header">Board header</label>
+            <div class="input-group">
+              <input
+                id="header"
+                type="text"
+                class="form-control"
+                placeholder="Header"
+                formControlName="header"
+              />
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="link">Board link</label>
+            <div class="input-group">
+              <input
+                id="link"
+                type="text"
+                class="form-control"
+                placeholder="Link"
+                formControlName="link"
+              />
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn btn-xs btn-danger"
+          (click)="closePopup()"
+        >
+          Close
+        </button>
+        <button
+          type="submit"
+          class="btn btn-xs btn-primary"
+          (click)="addBoardList()"
+        >
+          Add
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

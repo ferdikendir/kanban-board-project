@@ -1,0 +1,30 @@
+<div
+  cdkDrag
+  class="card mb-2 div-border-radius"
+  [style]="'background-color:' + item?.color"
+>
+  <div class="card-body" style="color: white">
+      <h6 class="card-title">
+        {{ item?.header
+        }}
+        <button
+          class="btn btn-tool float-sm-right"
+          type="button"
+          (click)="onDeleteCard.emit(item)"
+          data-card-widget="collapse"
+        >
+        <i class="fa fa-trash" style="color: white;" aria-hidden="true"></i>
+        </button>
+        <button
+          class="btn btn-tool float-sm-right"
+          type="button"
+          (click)="onUpdateCard.emit(item)"
+          data-card-widget="collapse"
+        >
+          <i class="fa fa-pencil" style="color: white;"></i>
+        </button>
+      </h6>
+
+      <p class="card-text">{{ item?.content }}</p>
+  </div>
+</div>
