@@ -1,27 +1,42 @@
-# KanbanBoardProject
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.8.
+#Kanban Board
 
-## Development server
+Bu projenin amacı Angular ile Todo list oluşturmaktır. Kullanıcının Board
+eklemesine olanak sağlayan bu proje dört temel Task List'ten oluşmaktadır.
+Bunlar; Backlog, To Do, In Progress ve Done listeleridir. Her bir Task List 
+altında birden fazla Card barındırmaktadır. Her bir Card güncellenebilir veya 
+silinebilir. Bunlarla birlikte Card'lar renklendirilebilir.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Backlog ve To Do listelerine yeni card'lar eklenebilir. Eklenen Card'lar sürükle
+bırak yöntemi ile hem bulundukları Task List içerinde hem de diğer Task List'ler 
+arasında taşınabilir.
 
-## Code scaffolding
+Kanban Board Rast Mobile Bilgi Teknolojileri LTD. Şti için tasarlanmıştır.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Bilgisayarınızda Çalıştırın
 
-## Build
+Projeyi klonlayın
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+```bash
+  git clone https://github.com/ferdikendir/kanban-board-project
+```
 
-## Running unit tests
+Proje dizinine gidin
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+```bash
+  cd my-project
+```
 
-## Running end-to-end tests
+Gerekli paketleri yükleyin
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+```bash
+  npm install
+```
 
-## Further help
+Sunucuyu çalıştırın
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+```bash
+  npm run start
+```
+
+  
