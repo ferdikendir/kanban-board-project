@@ -4,12 +4,12 @@
             "header": "Front End",
             "linkName": "Google",
             "link": "www.google.com",
-            "taskListItems": [
+            "taskLists": [
                 {
                     "header": "Backlog",
                     "color": "#2C3333",
                     "isAddable": true,
-                    "listItems": [
+                    "cards": [
                         {
                           "header": "Twilio integration",
                           "color": "#FE83C6",
@@ -26,7 +26,7 @@
                     "header": "To Do",
                     "color": "#2C3333",
                     "isAddable": true,
-                    "listItems": [
+                    "cards": [
                         {
                           "header": "Twilio integration",
                           "color": "#FF6363",
@@ -52,7 +52,7 @@
                 {
                     "header": "In Progress",
                     "color": "#2C3333",
-                    "listItems": [
+                    "cards": [
                         {
                           "header": "Twilio integration",
                           "color": "#FF6363",
@@ -78,7 +78,7 @@
                 {
                     "header": "Done",
                     "color": "#2C3333",
-                    "listItems": [
+                    "cards": [
                         {
                           "header": "Twilio integration",
                           "color": "#7CD1B8",
@@ -102,12 +102,12 @@
             "header": "Back End",
             "linkName": "Github",
             "link": "www.github.com",
-            "taskListItems": [
+            "taskLists": [
               {
                   "header": "Backlog",
                   "color": "#2C3333",
                   "isAddable": true,
-                  "listItems": [
+                  "cards": [
                       {
                         "header": "Twilio integration",
                         "color": "#FE83C6",
@@ -124,7 +124,7 @@
                   "header": "To Do",
                   "color": "#2C3333",
                   "isAddable": true,
-                  "listItems": [
+                  "cards": [
                       {
                         "header": "Twilio integration",
                         "color": "#FF6363",
@@ -150,7 +150,7 @@
               {
                   "header": "In Progress",
                   "color": "#2C3333",
-                  "listItems": [
+                  "cards": [
                       {
                         "header": "Twilio integration",
                         "color": "#FF6363",
@@ -176,7 +176,7 @@
               {
                   "header": "Done",
                   "color": "#2C3333",
-                  "listItems": [
+                  "cards": [
                       {
                         "header": "Twilio integration",
                         "color": "#7CD1B8",
@@ -200,12 +200,12 @@
           "header": "Full Stack",
           "linkName": "LinkedIn",
           "link": "www.linkedin.com",
-          "taskListItems": [
+          "taskLists": [
             {
                 "header": "Backlog",
                 "color": "#2C3333",
                 "isAddable": true,
-                "listItems": [
+                "cards": [
                     {
                       "header": "Twilio integration",
                       "color": "#FE83C6",
@@ -222,7 +222,7 @@
                 "header": "To Do",
                 "color": "#2C3333",
                 "isAddable": true,
-                "listItems": [
+                "cards": [
                     {
                       "header": "Twilio integration",
                       "color": "#FF6363",
@@ -248,7 +248,7 @@
             {
                 "header": "In Progress",
                 "color": "#2C3333",
-                "listItems": [
+                "cards": [
                     {
                       "header": "Twilio integration",
                       "color": "#FF6363",
@@ -274,7 +274,7 @@
             {
                 "header": "Done",
                 "color": "#2C3333",
-                "listItems": [
+                "cards": [
                     {
                       "header": "Twilio integration",
                       "color": "#7CD1B8",

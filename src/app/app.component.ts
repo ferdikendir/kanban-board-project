@@ -9,7 +9,6 @@ import { BoardService } from 'src/services/board.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'kanban-board-project';
   constructor(){}
 
   ngOnInit(): void {

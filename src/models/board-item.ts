@@ -1,8 +1,9 @@
-import { BaseListItem } from "./base-list-item";
-import { TaskListItem } from "./task-list-item";
+import { BaseList } from "./base-list-item";
+import { TaskList } from "./task-list";
 
-export interface BoardItem  extends BaseListItem {
+
+export interface BoardItem  extends BaseList {
     link: string;
     linkName: string;
-    taskListItems: TaskListItem[]
+    taskLists: TaskList[]
 }

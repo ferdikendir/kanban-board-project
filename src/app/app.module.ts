@@ -14,7 +14,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SideNavMenuComponent } from './side-nav-menu/side-nav-menu.component';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {OverlayModule} from '@angular/cdk/overlay';
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,7 +32,6 @@ import {OverlayModule} from '@angular/cdk/overlay';
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    OverlayModule,
     ToastrModule.forRoot(),
   ],
   providers: [BoardService],

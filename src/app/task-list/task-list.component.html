@@ -1,14 +1,14 @@
-<div [style]="'background-color:' + item?.color" class="card div-border-radius">
+<div [style]="'background-color:' + taskList?.color" class="card div-border-radius">
   <div
     cdkDropList
-    [cdkDropListData]="item?.listItems"
+    [cdkDropListData]="taskList?.cards"
     (cdkDropListDropped)="onDrop($event)"
-    [style]="'background-color:' + item?.color"
+    [style]="'background-color:' + taskList?.color"
     class="div-border-radius"
   >
     <div class="card-body">
       <h5 class="card-title">
-        {{ item?.header }}
+        {{ taskList?.header }}
         <button
           class="btn btn-tool float-right"
           (click)="collapse.toggle()"
@@ -23,14 +23,14 @@
         <app-card
           (onUpdateCard)="openPopupAndFillData(item)"
           (onDeleteCard)="selectedCard = item; openDeletePopup()"
-          *ngFor="let item of item?.listItems"
-          [item]="item"
+          *ngFor="let item of taskList?.cards"
+          [card]="item"
         >
         </app-card>
       </div>
     </div>
   </div>
-  <div class="card-footer" *ngIf="item?.isAddable">
+  <div class="card-footer" *ngIf="taskList?.isAddable">
     <button
       type="button"
       class="btn btn-primary btn-sm float-sm-right"
@@ -58,7 +58,7 @@
       <div class="modal-body">
         <form
           [formGroup]="addCardForm"
-          (submit)="addTaskList()"
+          (submit)="addCardToTaskList()"
           autocomplete="off"
         >
           <div class="mb-3">
@@ -111,7 +111,7 @@
         <button
           type="submit"
           class="btn btn-xs btn-primary"
-          (click)="addTaskList(); isCollapsed? collapse.toggle(): null"
+          (click)="addCardToTaskList(); isCollapsed? collapse.toggle(): null"
         >
           Add
         </button>

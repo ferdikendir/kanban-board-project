@@ -1,9 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
-import { BoardItem } from 'src/models/board-item';
 import { CardItem } from 'src/models/card-item';
-import { TaskListItem } from 'src/models/task-list-item';
+import { TaskList } from 'src/models/task-list';
 import { BoardService } from 'src/services/board.service';
 import { SharedService } from 'src/services/shared.service';
 
@@ -13,7 +12,7 @@ import { SharedService } from 'src/services/shared.service';
   styleUrls: ['./task-list.component.css'],
 })
 export class TaskListComponent implements OnInit {
-  @Input() item: TaskListItem;
+  @Input() taskList: TaskList;
 
   selectedCard: any = {};
 
@@ -25,13 +24,16 @@ export class TaskListComponent implements OnInit {
   ) {}
   public isCollapsed = false;
   addCardForm: FormGroup;
+
   ngOnInit(): void {
     this.createForm();
-    this.item.listItems.map((item) => {
+    //
+    this.taskList.cards.map((item) => {
       item.id = this.boardService.createRandomId();
     });
   }
 
+  // card ekleme formu
   createForm() {
     this.addCardForm = this.formBuilder.group({
       id: [0],
@@ -51,13 +53,14 @@ export class TaskListComponent implements OnInit {
     this.sharedService.drop(event);
   }
 
-  addTaskList() {
+  //yeni card ekleme
+  addCardToTaskList() {
     if (this.addCardForm.valid) {
-      var addItem: CardItem = Object.assign({}, this.addCardForm.value);
-      if (!addItem.id) {
-        addItem.id = this.boardService.createRandomId(); //yeni eklenen carda id verme
-        this.item?.listItems?.push(addItem);
-      } else this.item.listItems[this.findIndex(addItem)] = addItem;
+      var newCard: CardItem = Object.assign({}, this.addCardForm.value);
+      if (!newCard.id) {
+        newCard.id = this.boardService.createRandomId(); //yeni eklenen carda id verme
+        this.taskList?.cards?.push(newCard);
+      } else this.taskList.cards[this.findIndex(newCard)] = newCard;
       this.closePopup();
     } else
       this.toastrService.error(
@@ -90,7 +93,7 @@ export class TaskListComponent implements OnInit {
 
   deleteCard() {
     var index = this.findIndex(this.selectedCard);
-    if (index > -1) this.item.listItems.splice(index, 1);
+    if (index > -1) this.taskList.cards.splice(index, 1);
     this.closeDeletePopup();
   }
 
@@ -102,10 +105,11 @@ export class TaskListComponent implements OnInit {
     this.displayStyleForDelete = 'block';
   }
 
+  //card'ın index'ini bulma (guncelleme için)
   findIndex(item) {
     var index = -1;
-    for (let i = 0; i < this.item.listItems.length; i++) {
-      if (this.item.listItems[i].id === item.id) {
+    for (let i = 0; i < this.taskList.cards.length; i++) {
+      if (this.taskList.cards[i].id === item.id) {
         index = i;
         break;
       }

@@ -8,7 +8,7 @@ import { CardItem } from 'src/models/card-item';
 })
 export class CardComponent implements OnInit {
 
-  @Input() item?: CardItem;
+  @Input() card: CardItem;
   @Output() onUpdateCard = new EventEmitter();
   @Output() onDeleteCard = new EventEmitter();
   constructor() { }

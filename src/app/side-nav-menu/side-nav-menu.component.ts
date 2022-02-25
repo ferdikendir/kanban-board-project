@@ -1,10 +1,10 @@
-import { Component, HostListener, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSidenav } from '@angular/material/sidenav';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { from, Observable, of, ReplaySubject, Subject } from 'rxjs';
-import { delay, first, map, mergeMap } from 'rxjs/operators';
+import { from, Observable} from 'rxjs';
+import { delay, first, mergeMap } from 'rxjs/operators';
 import { BoardService } from 'src/services/board.service';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { BoardItem } from 'src/models/board-item';
@@ -83,10 +83,10 @@ export class SideNavMenuComponent implements OnInit {
     this.displayStyle = 'none';
   }
 
-  addBoardList() {
+  addBoard() {
     if (this.addBoardForm.valid) {
       var addItem = Object.assign({}, this.addBoardForm.value);
-      addItem.taskListItems = this.getBlankTaskList();
+      addItem.taskLists = this.getBlankTaskList();
       this.boardService.addNewBoard(addItem);
       this.sonGezilenlereEkle(addItem);
       this.boards$ = from(this.boardService.getBoards());
@@ -99,29 +99,30 @@ export class SideNavMenuComponent implements OnInit {
     }
   }
 
+  //yeni eklenen bard için tasklist oluşturma
   getBlankTaskList() {
     return [
       {
         header: 'Backlog',
         color: '#2C3333',
-        listItems: [],
+        cards: [],
         isAddable: true,
       },
       {
         header: 'To Do',
         color: '#2C3333',
-        listItems: [],
+        cards: [],
         isAddable: true,
       },
       {
         header: 'In Progress',
         color: '#2C3333',
-        listItems: [],
+        cards: [],
       },
       {
         header: 'Done',
         color: '#2C3333',
-        listItems: [],
+        cards: [],
       },
     ];
   }
