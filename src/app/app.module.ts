@@ -14,13 +14,15 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SideNavMenuComponent } from './side-nav-menu/side-nav-menu.component';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SharedModule } from './material/shared/shared.module';
+import { NgxSpinnerModule } from 'ngx-spinner';
 @NgModule({
   declarations: [
     AppComponent,
     CardComponent,
     TaskListComponent,
     BoardComponent,
-    SideNavMenuComponent,
+    SideNavMenuComponent
   ],
   imports: [
     BrowserModule,
@@ -28,6 +30,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     NgbModule,
     NgbAlertModule,
     MaterialModule,
+    SharedModule,
+    NgxSpinnerModule,
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,

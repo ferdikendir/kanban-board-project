@@ -8,6 +8,7 @@ import { delay, first, mergeMap } from 'rxjs/operators';
 import { BoardService } from 'src/services/board.service';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { BoardItem } from 'src/models/board-item';
+import { LoginService } from 'src/services/login.service';
 
 @Component({
   selector: 'app-side-nav-menu',
@@ -28,10 +29,12 @@ export class SideNavMenuComponent implements OnInit {
     private boardService: BoardService,
     private formBuilder: FormBuilder,
     private toastrService: ToastrService,
+    private loginService: LoginService,
     private route: Router, private observer: BreakpointObserver
   ) {}
 
   ngOnInit(): void {
+    if(!this.loginService.getUser()) this.route.navigate(['login']);
     this.createForm();
     localStorage.setItem('last-visited-projects', JSON.stringify(this.lastVisited));
     this.boards$
