@@ -3,7 +3,6 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { filter } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
-import { User } from 'src/models/user';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +10,7 @@ import { User } from 'src/models/user';
 export class LoginService {
   env = environment
 
-  user:User;
+  user: any;
 
   constructor(private httpService: HttpClient) { }
 
@@ -23,7 +22,7 @@ export class LoginService {
     localStorage.setItem('user', JSON.stringify(user));
   }
 
-  getUser(): User{
+  getUser(): any{
     return JSON.parse( localStorage.getItem('user'));
   }
 }
