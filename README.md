@@ -11,7 +11,6 @@ Backlog ve To Do listelerine yeni card'lar eklenebilir. Eklenen Card'lar sürük
 bırak yöntemi ile hem bulundukları Task List içerinde hem de diğer Task List'ler 
 arasında taşınabilir.
 
-Kanban Board Rast Mobile Bilgi Teknolojileri LTD. Şti için tasarlanmıştır.
 
 ## Bilgisayarınızda Çalıştırın
 
